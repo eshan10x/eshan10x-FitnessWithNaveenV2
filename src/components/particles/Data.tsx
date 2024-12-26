@@ -30,7 +30,7 @@ export const NavLinks = [
 export const HeroTexts = [
     {
         Heading: "Unleash Your Inner Strength!",
-        Paragraph: "Welcome to GymNex, where fitness meets fun! Get ready to unleash your inner strength and transform your life!",
+        Paragraph: "Welcome to Fitness With Naveen, where fitness meets fun! Get ready to unleash your inner strength and transform your life!",
         Button: "Join Now!"
     },
     {
@@ -39,18 +39,18 @@ export const HeroTexts = [
         Button: "Sign Up Today!"
     },
     {
-        Heading: "Fitness is Fun with Us!",
-        Paragraph: "At our gym, fitness is not just a routine; it's an enjoyable adventure! Join us in this fitness expedition, where fun and results go hand in hand!",
+        Heading: "Fitness with Naveen!",
+        Paragraph: "At our programmes, fitness is not just a routine; it's an enjoyable adventure! Join us in this fitness expedition, where fun and results go hand in hand!",
         Button: "Enroll Now!"
     }
 ]
 
 
 export const AboutTexts = {
-    firstText: "About GymNex",
+    firstText: "About Fitness With Naveen",
     secondText: "Welcome",
-    caption: "Welcome to GymNex, where fitness meets community and transformation happens!",
-    paragraph1: "At GymNex, we are more than just a gym; we are a passionate and supportive fitness family dedicated to helping you achieve your health and wellness goals. Our mission is to create a positive and empowering environment that inspires you to challenge yourself, embrace a healthy lifestyle, and discover the best version of yourself.",
+    caption: "Welcome to Fitness With Naveen, where fitness meets community and transformation happens!",
+    paragraph1: "At Fitness With Naveen, we are a passionate and supportive fitness family dedicated to helping you achieve your health and wellness goals. Our mission is to create a positive and empowering environment that inspires you to challenge yourself, embrace a healthy lifestyle, and discover the best version of yourself.",
 }
 
 export const OfferTexts = {
@@ -77,22 +77,43 @@ export const MembershipPlans = {
     secondText: "Membership Plans",
     cards: [
         {
-            amount: 8,
-            duration: "day",
-            caption: "One Day Training",
-            benefits: ["One time access to all clubs", "Group trainer", "Book a Group class", "Fitness orientation"]
+            amount: "30,000",
+            duration: "monthl",
+            caption: "Personal Training",
+            benefits: ["Special offer 25%"]
         },
         {
-            amount: 49,
+            amount: "35,000",
             duration: "month",
-            caption: "12 Months Membership",
-            benefits: ["Group classes", "Discuss fitness goals", "Group trainer", "Fitness orientation"]
+            caption: "Online Training",
+            benefits: [""]
         },
         {
-            amount: 65,
+            amount: "35,000",
             duration: "month",
-            caption: "Pay Every Month",
-            benefits: ["Group classes", "Discuss fitness goals", "Group trainer", "Fitness orientation"]
+            caption: "Home Visit",
+            benefits: ["For two 45,000"]
+        },
+        {
+            amount: "20,000",
+            duration: "month",
+            caption: "Workout Plan",
+            benefits: [""]
+
+        },
+        {
+            amount: "20,000",
+            duration: "month",
+            caption: "Meal Plan",
+            benefits: [""]
+
+        },
+        {
+            amount: "10,000",
+            duration: "month",
+            caption: "Outdoor Training",
+            benefits: ["Group more than 3 people 8,000 for each"]
+
         }
     ]
 }
@@ -195,10 +216,10 @@ export const FooterTexts = {
                 name: "11567 Santa Monica Blvd, Los Angeles, CA 90025, United States",
             },
             {
-                name: "gym_nex@example.com",
+                name: "fitnesswithnaveen@gmail.com",
             },
             {
-                name: "+1 424-248-8496",
+                name: "+94 076 687 6602",
             }
         ]
     },

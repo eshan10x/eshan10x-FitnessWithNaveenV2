@@ -25,11 +25,11 @@ const Footer = () => {
             <main className="w-full lg:pt-28 lg:pb-12 pt-20 pb-12 px-6 grid md:grid-cols-3 lg:gap-8 md:gap-5 gap-8 lg:px-32">
                 <div className="flex flex-col gap-2">
                     <Link to={`/`} className="font-extrabold flex items-center relative md:text-3xl text-2xl">
-                        <Text as="span" className="text-amber-500 absolute -top-5 md:left-5 left-3">
+                        <Text as="span" className="text-primary absolute -top-5 md:left-5 left-3">
                             <Barbell size={35} color="currentColor" weight="fill" />
                         </Text>
                         <Text as="span" className="text-white">Gym</Text>
-                        <Text as="span" className="bg-gradient-to-r from-amber-500 to-red-500 bg-clip-text text-transparent">Nex</Text>
+                        <Text as="span" className="bg-gradient-to-r text-primary to-red-500 bg-clip-text text-transparent">Nex</Text>
                     </Link>
                     <Text as="p" className="text-zinc-400 text-justify">{FooterTexts.underLogoText}</Text>
                 </div>
@@ -49,13 +49,13 @@ const Footer = () => {
                 </div>
 
                 {/* Quick contacts  */}
-                <div className="flex flex-col md:mt-8 gap-6">
+                <div className="flex flex-col md:mt-8 gap-6 ">
                     <Text as="h1" className="text-zinc-300 text-2xl font-bold">{FooterTexts.contacts.caption}</Text>
                     <ul className="flex flex-col gap-4">
                         {
                             FooterTexts.contacts.names.map((name, index) => (
                                 <List className="text-zinc-400 flex items-start gap-2" key={index}>
-                                    <Text as="span" className="text-amber-500 mt-1">{renderIcon(index)}</Text>
+                                    <Text as="span" className="text-primary mt-1">{renderIcon(index)}</Text>
                                     <Text as="span" className="">{name.name}</Text>
                                 </List>
                             ))
@@ -63,7 +63,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </main>
-            <div className="text-center py-3 bg-gradient-to-r from-red-500 to-amber-500">
+            <div className="text-center py-3 bg-gradient-to-r from-primary">
                 <Text as="p" className="text-zinc-200 md:text-sm text-xs font-bold">{FooterTexts.copyright}</Text>
             </div>
         </footer>

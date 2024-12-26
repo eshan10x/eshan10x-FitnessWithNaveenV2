@@ -5,7 +5,7 @@
 @tailwind utilities;
 
 a.active {
-    color: #f59e0b !important;
+    color: #a5d83c !important;
 }
 
 a.active::before {

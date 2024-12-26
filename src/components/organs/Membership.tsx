@@ -17,7 +17,7 @@ const Membership = () => {
                     MembershipPlans.cards.map((card, index) => (
                         <Card className={`w-full flex flex-col items-center gap-4 border border-zinc-500  transition-all duration-200 cursor-pointer hover:border-red-500/50 ${index === 1 ? "lg:py-16 py-10" : "py-10"}`} key={index}>
                             <Text as="h2" className="text-zinc-100 flex items-end gap-0.5">
-                                <span className="font-extrabold text-2xl">$</span>
+                                <span className="font-extrabold text-2xl">RS</span>
                                 <span className={`font-extrabold ${card.amount === 49 ? "text-6xl" : "text-5xl"}`}>{card.amount}</span>
                                 <span className="font-medium text-lg">/{card.duration}</span>
                             </Text>

@@ -6,6 +6,9 @@ export default {
       fontFamily: {
         nunito: ["Nunito Sans"],
       },
+      colors: {
+        primary: '#a5d83c',  // Define your custom color
+      },
     },
   },
   plugins: [],

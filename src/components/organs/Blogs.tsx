@@ -38,7 +38,7 @@ const Blogs = () => {
                 <div className="w-full lg:w-3/4 grid md:grid-cols-3 lg:gap-8 md:gap-5 gap-8 px-6 md:px-4 lg:px-0">
                     {
                         BlogTexts.blogNews.map((blog, index) => (
-                            <Card key={index} className="flex flex-col justify-between bg-zinc-950 border-b-4 border-red-500">
+                            <Card key={index} className="flex flex-col justify-between bg-zinc-950 border-b-4 border-primary">
                                 <Image alt={blog.title} className="w-full h-48" objectCover="object-cover" image={renderImage(index)} />
                                 <Link to="/" className="flex flex-col lg:p-6 md:p-4 p-6 gap-2 group">
                                     <Text as="h3" className="text-primary text-xs group-hover:underline font-semibold uppercase">{blog.caption}</Text>

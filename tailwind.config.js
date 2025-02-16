@@ -7,7 +7,8 @@ export default {
         nunito: ["Nunito Sans"],
       },
       colors: {
-        primary: '#a5d83c',  // Define your custom color
+        primary: '#a5d83c',
+        secondary: '#7E9F39',
       },
     },
   },

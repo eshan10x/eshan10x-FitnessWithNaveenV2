@@ -55,7 +55,7 @@ const HeroSection = () => {
         }
     }, [])
     return (
-        <section className="w-full h-auto bg-gradient-to-r from-red-500 to-amber-500 relative overflow-x-hidden">
+        <section className="w-full h-auto bg-primary from-primary to-secondary relative overflow-x-hidden">
             <Slider ref={(slider) => (sliderRef.current = slider)} {...settings} className="h-full">
                 {
                     HeroTexts.map((hero, index) => (
@@ -77,14 +77,14 @@ const HeroSection = () => {
                                 </Text>
                                 <div className="flex items-center gap-8">
                                     <Slide direction="up">
-                                        <Button type="button" className="px-10 font-medium text-white py-2.5 bg-gradient-to-r whitespace-nowrap from-red-500 to-amber-500">
+                                        <Button type="button" className="px-10 font-medium text-black py-2.5 bg-primary whitespace-nowrap from-primary to-amber-500">
                                             {hero.Button}
                                         </Button>
                                     </Slide>
                                     <Slide direction="up">
-                                        <a href="/" className="flex items-center gap-2 text-red-500 hover:text-amber-500 group">
-                                            <YoutubeLogo size={20} color="currentColor" weight="fill" />
-                                            <Text as="span" className="text-zinc-100 group-hover:text-amber-500 uppercase text-xs">Watch reviews</Text>
+                                        <a href="/" className="flex items-center gap-2 text-primary hover:text-secondary group">
+                                            <YoutubeLogo size={20} color="red" weight="fill" />
+                                            <Text as="span" className="text-zinc-100 group-hover:text-primary uppercase text-xs">Watch reviews</Text>
                                         </a>
                                     </Slide>
                                 </div>
@@ -95,10 +95,10 @@ const HeroSection = () => {
                 }
             </Slider>
             <div className="flex justify-end lg:justify-start items-center gap-4 absolute lg:bottom-10 md:bottom-5 md:right-10 right-4 bottom-4">
-                <Button onClick={previous} type="button" className="w-8 h-8 border rounded-full border-amber-500 flex items-center justify-center text-amber-500 hover:text-red-500 hover:border-red-500">
+                <Button onClick={previous} type="button" className="w-8 h-8 border rounded-full border-primary flex items-center justify-center text-primary hover:text-secondary hover:border-secondary">
                     <ArrowCircleLeft size={20} color="currentColor" weight="light" />
                 </Button>
-                <Button onClick={next} type="button" className="w-8 h-8 border rounded-full border-amber-500 flex items-center justify-center text-amber-500 hover:text-red-500 hover:border-red-500">
+                <Button onClick={next} type="button" className="w-8 h-8 border rounded-full border-primary flex items-center justify-center text-primary hover:text-secondary hover:border-secondary">
                     <ArrowCircleRight size={20} color="currentColor" weight="light" />
                 </Button>
             </div>

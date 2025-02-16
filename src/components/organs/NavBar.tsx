@@ -45,7 +45,7 @@ const NavBar = () => {
                         {
                             NavLinks.map((navlink, index) => (
                                 <List className="w-full text-base" key={index}>
-                                    <NavLink to={navlink.url} className={`relative inline-block  px-2 whitespace-nowrap text-white uppercase text-xs font-bold transition-all duration-200 hover:text-amber-500 before:w-0 before:h-0.5 before:bg-gradient-to-r from-red-500 to-amber-500 before:absolute before:-bottom-[2.93rem] before:left-0 before:transition-all before:duration-200 before:ease-in hover:before:left-0.5`}>{navlink.name}</NavLink>
+                                    <NavLink to={navlink.url} className={`relative inline-block  px-2 whitespace-nowrap text-white uppercase text-xs font-bold transition-all duration-200 hover:text-primary before:w-0 before:h-0.5 before:bg-gradient-to-r from-primary to-secondary before:absolute before:-bottom-[2.93rem] before:left-0 before:transition-all before:duration-200 before:ease-in hover:before:left-0.5`}>{navlink.name}</NavLink>
                                 </List>
                             ))
                         }
@@ -65,8 +65,8 @@ const NavBar = () => {
                     <section className="w-full px-4 py-6 flex flex-col gap-16">
                         <div className="w-full flex pt-5 px-4 justify-between items-center">
                             <Link to={`/`} className="font-extrabold text-2xl">
-                                <span className=" text-white ">Gym</span>
-                                <span className=" text-amber-500">Nex</span>
+                                <span className=" text-white ">Fitness</span>
+                                <span className=" text-amber-500">WithNaveen</span>
                             </Link>
                             <div className="hamburger text-white cursor-pointer" onClick={handleToggle}>
                                 <ArrowCircleRight size={25} color="currentColor" weight="light" />

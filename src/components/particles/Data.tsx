@@ -219,9 +219,9 @@ export const FooterTexts = {
                 name: "fitnesswithnaveen@gmail.com",
             },
             {
-                name: "+94 076 687 6602",
+                name: "(+94) 76 687 6602",
             }
         ]
     },
-    copyright: "Copyright 2023. All Right Reserved"
+    copyright: "Copyright 2025. All Right Reserved"
 }

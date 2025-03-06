@@ -28,8 +28,8 @@ const Footer = () => {
                         <Text as="span" className="text-primary absolute -top-5 md:left-5 left-3">
                             <Barbell size={35} color="currentColor" weight="fill" />
                         </Text>
-                        <Text as="span" className="text-white">Gym</Text>
-                        <Text as="span" className="bg-gradient-to-r text-primary to-red-500 bg-clip-text text-transparent">Nex</Text>
+                        <Text as="span" className="text-white">FitnessWith</Text>
+                        <Text as="span" className="bg-gradient-to-r text-primary to-secondary bg-clip-text">Naveen</Text>
                     </Link>
                     <Text as="p" className="text-zinc-400 text-justify">{FooterTexts.underLogoText}</Text>
                 </div>
@@ -63,7 +63,7 @@ const Footer = () => {
                     </ul>
                 </div>
             </main>
-            <div className="text-center py-3 bg-gradient-to-r from-primary">
+            <div className="text-center py-3 bg-gradient-to-r from-primary to-secondary">
                 <Text as="p" className="text-zinc-200 md:text-sm text-xs font-bold">{FooterTexts.copyright}</Text>
             </div>
         </footer>

@@ -8,8 +8,8 @@ export const NavLinks = [
         url: "/about"
     },
     {
-        name: "Schedule",
-        url: "/schedule"
+        name: "Join Us",
+        url: "/join"
     },
     {
         name: "Gallery",

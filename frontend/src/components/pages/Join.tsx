@@ -64,14 +64,74 @@ const JoinPage = () => {
     }
   };
 
+  // // Handle form submission
+  // const handleSubmit = (e) => {
+  //   e.preventDefault();
+  //   // Here you would typically send the data to your backend
+  //   console.log("Form Data:", formData);
+  //   console.log("Images:", images);
+  //   alert("Form submitted successfully! We'll contact you soon.");
+  // };
+
   // Handle form submission
-  const handleSubmit = (e) => {
-    e.preventDefault();
-    // Here you would typically send the data to your backend
-    console.log("Form Data:", formData);
-    console.log("Images:", images);
-    alert("Form submitted successfully! We'll contact you soon.");
-  };
+const handleSubmit = async (e) => {
+  e.preventDefault();
+  
+  try {
+    // Create form data object to send files and text data
+    const formDataToSend = new FormData();
+    
+    // Add the JSON form data
+    formDataToSend.append('formData', JSON.stringify(formData));
+    
+    // Add image files if they exist
+    if (images.frontView) formDataToSend.append('frontView', images.frontView);
+    if (images.sideView) formDataToSend.append('sideView', images.sideView);
+    if (images.backView) formDataToSend.append('backView', images.backView);
+    
+    // Send data to backend
+    const response = await fetch('http://localhost:5001/api/submit-application', {
+      method: 'POST',
+      body: formDataToSend,
+    });
+    
+    const result = await response.json();
+    
+    if (result.success) {
+      alert("Form submitted successfully! We'll contact you soon.");
+      // Reset form after successful submission
+      setFormData({
+        name: "",
+        dob: "",
+        gender: "",
+        mobile: "",
+        email: "",
+        weight: "",
+        height: "",
+        bmi: "",
+        purpose: "",
+        program: "",
+        heartCondition: "",
+        activityLevel: "",
+      });
+      setImages({
+        frontView: null,
+        sideView: null,
+        backView: null,
+      });
+      setPreviews({
+        frontView: "",
+        sideView: "",
+        backView: "",
+      });
+    } else {
+      alert("Something went wrong. Please try again later.");
+    }
+  } catch (error) {
+    console.error("Error submitting form:", error);
+    alert("Failed to submit form. Please try again later.");
+  }
+};
 
   // Get BMI category
   const getBmiCategory = () => {

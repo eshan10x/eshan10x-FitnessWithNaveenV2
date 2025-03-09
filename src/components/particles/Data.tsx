@@ -301,3 +301,46 @@ export const GalleryTexts = {
     ]
 };
 
+export const JoinUsTexts = {
+    firstText: "Join Our Fitness Family",
+    secondText: "Start Your Fitness Journey",
+    description: "Take the first step towards a healthier, stronger you by joining Fitness With Naveen. Fill out the form below, and our expert trainers will create a personalized fitness plan tailored to your goals and needs.",
+    
+    // Options for dropdown menus
+    genderOptions: [
+        "Male",
+        "Female",
+        "Non-binary",
+        "Prefer not to say"
+    ],
+    
+    purposeOptions: [
+        "Weight Loss",
+        "Muscle Building",
+        "Toning",
+        "Improved Fitness",
+        "Strength Training",
+        "Athletic Performance",
+        "Health Management",
+        "Rehabilitation"
+    ],
+    
+    programOptions: [
+        "Personal Training",
+        "Online Training",
+        "Home Visit",
+        "Workout Plan",
+        "Meal Plan",
+        "Outdoor Training",
+        "Group Classes"
+    ],
+    
+    activityOptions: [
+        "Sedentary (little to no exercise)",
+        "Lightly active (light exercise/sports 1-3 days/week)",
+        "Moderately active (moderate exercise/sports 3-5 days/week)",
+        "Very active (hard exercise/sports 6-7 days/week)",
+        "Extra active (very hard exercise/sports & physical job or training)"
+    ]
+};
+

@@ -11,6 +11,7 @@ import Footer from "./components/organs/Footer";
 import Contact from "./components/pages/ContactPage";
 import AboutPage from "./components/pages/AboutUsPage";
 import GalleryPage from "./components/pages/GalleryPage";
+import JoinPage from "./components/pages/join";
 
 function App() {
 
@@ -29,6 +30,7 @@ function App() {
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<Contact />} />
         <Route path="/gallery" element={<GalleryPage />} />
+        <Route path="/join" element={<JoinPage />} />
       </Routes>
       <Footer />
     </div>

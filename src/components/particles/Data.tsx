@@ -16,10 +16,6 @@ export const NavLinks = [
         url: "/gallery"
     },
     {
-        name: "News",
-        url: "/news"
-    },
-    {
         name: "Contacts",
         url: "/contact"
     },
@@ -192,16 +188,12 @@ export const FooterTexts = {
                 url: "/about"
             },
             {
-                name: "Schedule",
-                url: "/schedule"
+                name: "Join Us",
+                url: "/join"
             },
             {
                 name: "Gallery",
                 url: "/gallery"
-            },
-            {
-                name: "News",
-                url: "/news"
             },
             {
                 name: "Contacts",

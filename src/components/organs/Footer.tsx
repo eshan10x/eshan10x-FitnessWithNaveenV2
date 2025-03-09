@@ -41,7 +41,7 @@ const Footer = () => {
                         {
                             FooterTexts.quickLinks.links.map((link, index) => (
                                 <List className="text-zinc-400" key={index}>
-                                    <Link to={link.url} className="transition-all duration-200 hover:text-red-500">{link.name}</Link>
+                                    <Link to={link.url} className="transition-all duration-200 hover:text-primary">{link.name}</Link>
                                 </List>
                             ))
                         }

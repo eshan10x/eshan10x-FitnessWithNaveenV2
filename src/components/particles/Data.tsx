@@ -225,3 +225,79 @@ export const FooterTexts = {
     },
     copyright: "Copyright 2025. All Right Reserved"
 }
+
+export const GalleryTexts = {
+    firstText: "Our Gallery",
+    secondText: "Fitness in Action",
+    description: "Explore our gallery showcasing our state-of-the-art facilities, inspiring workout sessions, and the transformative journeys of our members. Get a glimpse of what awaits you at Fitness With Naveen.",
+    items: [
+        {
+            id: "img1",
+            type: "image",
+            src: "../../assets/gym/2.jpeg", // Using existing images from your project
+            title: "Morning Workout Session",
+            category: "training"
+        },
+        {
+            id: "img2",
+            type: "image",
+            src: "../../assets/gym/3.jpeg",
+            title: "Equipment Area",
+            category: "facilities"
+        },
+        {
+            id: "img3",
+            type: "image",
+            src: "../../assets/gym/4.jpeg",
+            title: "Weight Training",
+            category: "training"
+        },
+        {
+            id: "img4",
+            type: "image",
+            src: "../../assets/gym/5.jpeg",
+            title: "Cardio Zone",
+            category: "facilities"
+        },
+        {
+            id: "vid1",
+            type: "video",
+            src: "/videos/workout-session.mp4", // You'll need to add these videos to your public folder
+            thumbnail: "../../assets/gym/2.jpeg", // Using an image as thumbnail
+            title: "Full Body Workout Tutorial",
+            category: "tutorials"
+        },
+        {
+            id: "vid2",
+            type: "video",
+            src: "/videos/yoga-class.mp4",
+            thumbnail: "../../assets/gym/3.jpeg",
+            title: "Yoga Class Highlights",
+            category: "classes"
+        },
+        {
+            id: "img5",
+            type: "image",
+            src: "../../assets/gym/2.jpeg",
+            title: "Strength Training",
+            category: "training"
+        },
+        {
+            id: "img6",
+            type: "image",
+            src: "../../assets/gym/3.jpeg",
+            title: "Yoga Studio",
+            category: "facilities"
+        },
+        {
+            id: "vid3",
+            type: "video",
+            src: "/videos/success-story.mp4",
+            thumbnail: "../../assets/gym/4.jpeg",
+            title: "Member Success Story",
+            category: "testimonials"
+        }
+        // You can add more items as needed
+    ]
+};
+

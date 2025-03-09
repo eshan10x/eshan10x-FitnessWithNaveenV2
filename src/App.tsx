@@ -10,6 +10,7 @@ import Home from "./components/pages/Home";
 import Footer from "./components/organs/Footer";
 import Contact from "./components/pages/ContactPage";
 import AboutPage from "./components/pages/AboutUsPage";
+import GalleryPage from "./components/pages/GalleryPage";
 
 function App() {
 
@@ -27,7 +28,7 @@ function App() {
         <Route path="/" element={<Home />} />
         <Route path="/about" element={<AboutPage />} />
         <Route path="/contact" element={<Contact />} />
-
+        <Route path="/gallery" element={<GalleryPage />} />
       </Routes>
       <Footer />
     </div>

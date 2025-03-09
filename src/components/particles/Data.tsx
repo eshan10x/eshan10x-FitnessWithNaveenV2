@@ -336,3 +336,9 @@ export const JoinUsTexts = {
     ]
 };
 
+export const ContactUsTexts = {
+    firstText: "Feel free to Contact Us Fitness with Naveen",
+    secondText: "Get in touch with us.",
+    description: "Willing to help you pick the suitable training program according to your fitness level and physical abilities",
+};
+

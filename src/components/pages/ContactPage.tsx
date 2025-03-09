@@ -1,6 +1,6 @@
 import { Fade } from "react-awesome-reveal";
 import { Text } from "../atoms/Text";
-import { ContactTexts } from "../particles/Data";
+import { ContactTexts, ContactUsTexts } from "../particles/Data";
 import { useState } from "react";
 
 const ContactPage = () => {
@@ -36,6 +36,36 @@ const ContactPage = () => {
 
     return (
         <section className="w-full h-auto flex flex-col items-center bg-zinc-900 pt-24">
+
+            {/* Hero Section */}
+                  <div className="w-full py-16 bg-zinc-950">
+                    <main className="lg:mx-20 md:mx-10 mx-6">
+                      <Fade>
+                        <div className="flex flex-col items-center text-center mb-10">
+                          <div className="flex flex-col items-center relative before:absolute before:-bottom-6 before:left-0 before:right-0 before:mx-auto before:w-20 before:h-1 before:rounded-lg before:bg-primary before:from-amber-500 before:to-red-500 z-10">
+                            <Text
+                              as="p"
+                              className="text-primary lg:text-sm text-xs tracking-widest uppercase font-medium"
+                            >
+                              {ContactUsTexts.firstText}
+                            </Text>
+                            <Text
+                              as="h1"
+                              className="text-zinc-100 lg:text-5xl md:text-4xl text-3xl"
+                            >
+                              {ContactUsTexts.secondText}
+                            </Text>
+                          </div>
+                          <Text
+                            as="p"
+                            className="text-zinc-400 mt-16 mb-4 text-base max-w-3xl"
+                          >
+                            {ContactUsTexts.description}
+                          </Text>
+                        </div>
+                      </Fade>
+                    </main>
+                  </div>
 
             {/* Contact Form Section */}
             <div className="w-full py-20 bg-zinc-900">

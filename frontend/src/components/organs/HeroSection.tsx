@@ -1,8 +1,8 @@
 import { useCallback, useRef } from "react";
 import { Image } from "../atoms/Image"
-import HeroImg1 from "../../assets/hero/1.jpeg"
-import HeroImg2 from "../../assets/hero/2.jpeg"
-import HeroImg3 from "../../assets/hero/3.jpeg"
+import HeroImg1 from "../../assets/new_gym/4.png"
+import HeroImg2 from "../../assets/new_gym/5.png"
+import HeroImg3 from "../../assets/new_gym/2.png"
 import { HeroTexts } from "../particles/Data";
 import Slider from "react-slick";
 import { Text } from "../atoms/Text";

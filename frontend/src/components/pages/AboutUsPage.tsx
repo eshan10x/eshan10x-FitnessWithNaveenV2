@@ -6,6 +6,8 @@ import Image2 from "../../assets/gym/3.jpeg";
 import Image3 from "../../assets/gym/4.jpeg";
 import Image4 from "../../assets/gym/5.jpeg";
 import { Image } from "../atoms/Image";
+import TrainerImage from "../../assets/new_gym/IMG_3020.png"
+import GymEnvImg from "../../assets/new_gym/7.png"
 
 const AboutPage = () => {
     return (
@@ -56,69 +58,73 @@ const AboutPage = () => {
                 </main>
             </div>
 
-            {/* Our Team Section */}
+            {/* Our Team Section - Redesigned */}
             <div className="w-full py-16 bg-zinc-950">
                 <main className="lg:mx-20 md:mx-10 mx-6">
                     <Fade>
                         <div className="flex flex-col items-center mb-16">
                             <div className="flex flex-col items-center relative before:absolute before:-bottom-6 before:left-0 before:right-0 before:mx-auto before:w-20 before:h-1 before:rounded-lg before:bg-primary before:from-amber-500 before:to-red-500 z-10">
-                                <Text as="p" className="text-primary lg:text-sm text-xs tracking-widest uppercase font-medium">Expert Trainers</Text>
-                                <Text as="h2" className="text-zinc-100 lg:text-4xl md:text-3xl text-2xl">Meet Our Team</Text>
+                                <Text as="p" className="text-primary lg:text-sm text-xs tracking-widest uppercase font-medium">Expert Trainer</Text>
+                                <Text as="h2" className="text-zinc-100 lg:text-4xl md:text-3xl text-2xl">Meet Naveen</Text>
                             </div>
                         </div>
 
-                        <div className="grid md:grid-cols-2 lg:grid-cols-3 gap-8">
-                            {/* Team Member 1 */}
-                            <div className="bg-zinc-900 rounded-lg overflow-hidden group">
-                                <div className="h-80 bg-zinc-800 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-primary opacity-20 group-hover:opacity-0 transition-all duration-300"></div>
-                                    {/* Replace with actual trainer image */}
-                                    <div className="w-full h-full bg-zinc-700 flex items-center justify-center">
-                                        <Text as="p" className="text-zinc-400">Trainer Image</Text>
+                        {/* Modern Team Member Layout */}
+                        <div className="w-full bg-zinc-900 rounded-lg overflow-hidden">
+                            <div className="flex flex-col md:flex-row">
+                                {/* Left side - Image */}
+                                <div className="md:w-1/2 relative">
+                                    <div className="h-full min-h-80 relative overflow-hidden">
+                                        <div className="absolute inset-0 bg-gradient-to-r from-primary/10 to-transparent z-10"></div>
+                                        <Image 
+                                            alt="Naveen Hettiarachchi - Head Trainer" 
+                                            objectCover="object-cover" 
+                                            className="w-full h-full" 
+                                            image={TrainerImage} 
+                                        />
                                     </div>
                                 </div>
-                                <div className="p-6">
-                                    <Text as="h3" className="text-zinc-100 text-xl font-bold mb-1">Naveen Kumar</Text>
-                                    <Text as="p" className="text-primary text-sm mb-4">Founder & Head Trainer</Text>
-                                    <Text as="p" className="text-zinc-400">
-                                        With over 10 years of experience and multiple certifications, Naveen specializes in strength training, weight management, and functional fitness.
-                                    </Text>
-                                </div>
-                            </div>
-
-                            {/* Team Member 2 */}
-                            <div className="bg-zinc-900 rounded-lg overflow-hidden group">
-                                <div className="h-80 bg-zinc-800 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-primary opacity-20 group-hover:opacity-0 transition-all duration-300"></div>
-                                    {/* Replace with actual trainer image */}
-                                    <div className="w-full h-full bg-zinc-700 flex items-center justify-center">
-                                        <Text as="p" className="text-zinc-400">Trainer Image</Text>
+                                
+                                {/* Right side - Content */}
+                                <div className="md:w-1/2 p-8 md:p-12 flex flex-col justify-center">
+                                    <div className="mb-6 pb-6 border-b border-zinc-800">
+                                        <Text as="h3" className="text-zinc-100 text-3xl font-bold mb-2">Naveen Hettiarachchi</Text>
+                                        <Text as="p" className="text-primary text-lg">Founder & Head Trainer</Text>
                                     </div>
-                                </div>
-                                <div className="p-6">
-                                    <Text as="h3" className="text-zinc-100 text-xl font-bold mb-1">Priya Sharma</Text>
-                                    <Text as="p" className="text-primary text-sm mb-4">Yoga & Pilates Instructor</Text>
-                                    <Text as="p" className="text-zinc-400">
-                                        Priya brings harmony to mind and body through her expert yoga and pilates instruction, helping clients improve flexibility and mindfulness.
-                                    </Text>
-                                </div>
-                            </div>
-
-                            {/* Team Member 3 */}
-                            <div className="bg-zinc-900 rounded-lg overflow-hidden group">
-                                <div className="h-80 bg-zinc-800 relative overflow-hidden">
-                                    <div className="absolute inset-0 bg-primary opacity-20 group-hover:opacity-0 transition-all duration-300"></div>
-                                    {/* Replace with actual trainer image */}
-                                    <div className="w-full h-full bg-zinc-700 flex items-center justify-center">
-                                        <Text as="p" className="text-zinc-400">Trainer Image</Text>
+                                    
+                                    <div className="space-y-4">
+                                        <Text as="p" className="text-zinc-400 text-lg">
+                                            With over 10 years of experience and multiple certifications, Naveen specializes in strength training, weight management, and functional fitness.
+                                        </Text>
+                                        
+                                        <div className="pt-4">
+                                            <Text as="h4" className="text-zinc-200 font-bold mb-3">Specializations:</Text>
+                                            <div className="flex flex-wrap gap-3">
+                                                <span className="bg-zinc-800 text-primary px-4 py-2 rounded-full text-sm">Strength Training</span>
+                                                <span className="bg-zinc-800 text-primary px-4 py-2 rounded-full text-sm">Weight Management</span>
+                                                <span className="bg-zinc-800 text-primary px-4 py-2 rounded-full text-sm">Functional Fitness</span>
+                                                <span className="bg-zinc-800 text-primary px-4 py-2 rounded-full text-sm">Nutrition</span>
+                                            </div>
+                                        </div>
+                                        
+                                        <div className="pt-4">
+                                            <Text as="h4" className="text-zinc-200 font-bold mb-3">Certifications:</Text>
+                                            <div className="space-y-2">
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-3 h-3 rounded-full bg-primary"></div>
+                                                    <Text as="p" className="text-zinc-400">Certified Personal Trainer (CPT)</Text>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-3 h-3 rounded-full bg-primary"></div>
+                                                    <Text as="p" className="text-zinc-400">Specialist in Sports Nutrition</Text>
+                                                </div>
+                                                <div className="flex items-center gap-2">
+                                                    <div className="w-3 h-3 rounded-full bg-primary"></div>
+                                                    <Text as="p" className="text-zinc-400">Advanced Strength & Conditioning Coach</Text>
+                                                </div>
+                                            </div>
+                                        </div>
                                     </div>
-                                </div>
-                                <div className="p-6">
-                                    <Text as="h3" className="text-zinc-100 text-xl font-bold mb-1">Rajiv Patel</Text>
-                                    <Text as="p" className="text-primary text-sm mb-4">Nutrition Specialist</Text>
-                                    <Text as="p" className="text-zinc-400">
-                                        Rajiv helps clients optimize their nutrition to complement their fitness routines, creating personalized meal plans for maximum results.
-                                    </Text>
                                 </div>
                             </div>
                         </div>
@@ -175,22 +181,24 @@ const AboutPage = () => {
                                 </div>
                             </div>
                             <div className="md:h-[500px] h-[300px] bg-zinc-800 rounded-lg overflow-hidden relative">
-                                {/* Replace with actual gym image */}
-                                <div className="w-full h-full bg-zinc-700 flex items-center justify-center">
-                                    <Text as="p" className="text-zinc-400">Gym Environment Image</Text>
-                                </div>
+                            <Image 
+                                            alt="Gym env img" 
+                                            objectCover="object-cover" 
+                                            className="w-full h-full" 
+                                            image={GymEnvImg} 
+                                        />
                                 <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-zinc-900 to-transparent p-8">
                                     <div className="grid grid-cols-3 gap-4">
                                         <div className="text-center">
-                                            <Text as="h4" className="text-primary text-3xl font-bold">250+</Text>
+                                            <Text as="h4" className="text-primary text-3xl font-bold">30+</Text>
                                             <Text as="p" className="text-zinc-300 text-sm">Active Members</Text>
                                         </div>
                                         <div className="text-center">
-                                            <Text as="h4" className="text-primary text-3xl font-bold">15+</Text>
+                                            <Text as="h4" className="text-primary text-3xl font-bold">1</Text>
                                             <Text as="p" className="text-zinc-300 text-sm">Expert Trainers</Text>
                                         </div>
                                         <div className="text-center">
-                                            <Text as="h4" className="text-primary text-3xl font-bold">1000+</Text>
+                                            <Text as="h4" className="text-primary text-3xl font-bold">50+</Text>
                                             <Text as="p" className="text-zinc-300 text-sm">Success Stories</Text>
                                         </div>
                                     </div>

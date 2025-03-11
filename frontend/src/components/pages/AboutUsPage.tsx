@@ -6,7 +6,7 @@ import Image2 from "../../assets/gym/3.jpeg";
 import Image3 from "../../assets/gym/4.jpeg";
 import Image4 from "../../assets/gym/5.jpeg";
 import { Image } from "../atoms/Image";
-import TrainerImage from "../../assets/new_gym/IMG_3020.png"
+import TrainerImage from "../../assets/new_gym/IMG_3020.jpg"
 import GymEnvImg from "../../assets/new_gym/7.png"
 
 const AboutPage = () => {

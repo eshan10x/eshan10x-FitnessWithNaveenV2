@@ -69,6 +69,9 @@ app.post('/api/submit-application', upload.fields([
       
       <h2>Health Screening</h2>
       <p><strong>Heart Condition:</strong> ${formData.heartCondition}</p>
+      <p><strong>Heart Condition:</strong> ${formData.chestPain}</p>
+      <p><strong>Heart Condition:</strong> ${formData.looseBalance}</p>
+      <p><strong>Heart Condition:</strong> ${formData.brokenBone}</p>
       <p><strong>Activity Level:</strong> ${formData.activityLevel}</p>
     `;
     

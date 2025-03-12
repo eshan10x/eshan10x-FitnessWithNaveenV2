@@ -18,9 +18,6 @@ const JoinPage = () => {
     purpose: "",
     program: "",
     heartCondition: "",
-    chestPain: "",
-    looseBalance: "",
-    brokenBone: "",
     activityLevel: "",
   });
 
@@ -115,9 +112,6 @@ const handleSubmit = async (e) => {
         purpose: "",
         program: "",
         heartCondition: "",
-        chestPain: "",
-        looseBalance: "",
-        brokenBone: "",
         activityLevel: "",
       });
       setImages({
@@ -400,13 +394,13 @@ const handleSubmit = async (e) => {
                 <Text as="p" className="text-zinc-400 text-sm">
                   Your safety is our priority. Please answer these questions honestly.
                 </Text>
-                <Warning size={20} className="text-yellow-500 flex-shrink-0 mt-1" />
               </div>
 
               <div className="grid grid-cols-1 gap-6 mb-8">
                 {/* Heart Condition */}
                 <div className="flex flex-col gap-2">
                   <label className="text-zinc-300 font-medium flex items-start gap-2">
+                    <Warning size={20} className="text-yellow-500 flex-shrink-0 mt-1" />
                     <span>Has your doctor ever said that you have a heart condition and that you should only do physical activity recommended by a doctor?*</span>
                   </label>
                   <div className="flex gap-4 mt-2">
@@ -428,102 +422,6 @@ const handleSubmit = async (e) => {
                         name="heartCondition"
                         value="No"
                         checked={formData.heartCondition === "No"}
-                        onChange={handleInputChange}
-                        required
-                        className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"
-                      />
-                      <span className="text-zinc-300">No</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-zinc-300 font-medium flex items-start gap-2">
-                    <span>Do you feel pain in your chest when you do any physical activity?*</span>
-                  </label>
-                  <div className="flex gap-4 mt-2">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="chestPain"
-                        value="Yes"
-                        checked={formData.chestPain === "Yes"}
-                        onChange={handleInputChange}
-                        required
-                        className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"
-                      />
-                      <span className="text-zinc-300">Yes</span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="chestPain"
-                        value="No"
-                        checked={formData.chestPain === "No"}
-                        onChange={handleInputChange}
-                        required
-                        className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"
-                      />
-                      <span className="text-zinc-300">No</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-zinc-300 font-medium flex items-start gap-2">
-                    <span>Do you loose your balance because of dizziness or do you ever loose consciousness?*</span>
-                  </label>
-                  <div className="flex gap-4 mt-2">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="looseBalance"
-                        value="Yes"
-                        checked={formData.looseBalance === "Yes"}
-                        onChange={handleInputChange}
-                        required
-                        className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"
-                      />
-                      <span className="text-zinc-300">Yes</span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="looseBalance"
-                        value="No"
-                        checked={formData.looseBalance === "No"}
-                        onChange={handleInputChange}
-                        required
-                        className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"
-                      />
-                      <span className="text-zinc-300">No</span>
-                    </label>
-                  </div>
-                </div>
-
-                <div className="flex flex-col gap-2">
-                  <label className="text-zinc-300 font-medium flex items-start gap-2">
-                    <span>Do you have a bone or joint problem that could be made worse by a change in your physical activity?*</span>
-                  </label>
-                  <div className="flex gap-4 mt-2">
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="brokenBone"
-                        value="Yes"
-                        checked={formData.brokenBone === "Yes"}
-                        onChange={handleInputChange}
-                        required
-                        className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"
-                      />
-                      <span className="text-zinc-300">Yes</span>
-                    </label>
-                    <label className="flex items-center gap-2 cursor-pointer">
-                      <input
-                        type="radio"
-                        name="brokenBone"
-                        value="No"
-                        checked={formData.brokenBone === "No"}
                         onChange={handleInputChange}
                         required
                         className="w-4 h-4 text-primary bg-zinc-700 border-zinc-600 focus:ring-primary"

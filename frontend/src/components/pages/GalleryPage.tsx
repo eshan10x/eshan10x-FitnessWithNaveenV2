@@ -5,33 +5,36 @@ import { useState } from "react";
 import { Image } from "../atoms/Image";
 import VideoModal from "../molecules/VideoModal";
 
-// Define types for our gallery items
-type GalleryItemType = 'image' | 'video';
+
+enum GalleryItemType {
+    IMAGE = "image",
+    VIDEO = "video"
+}
 
 interface GalleryItem {
     id: string;
     type: GalleryItemType;
     src: string;
-    thumbnail?: string;
     title: string;
     category: string;
+    thumbnail?: string;
 }
 
 const GalleryPage = () => {
     // State for active filter category
     const [activeCategory, setActiveCategory] = useState<string>("all");
-    
+
     // State for modals
     const [selectedVideo, setSelectedVideo] = useState<GalleryItem | null>(null);
     const [lightboxOpen, setLightboxOpen] = useState(false);
     const [selectedImage, setSelectedImage] = useState<GalleryItem | null>(null);
-    
+
     // Get unique categories from gallery items
     const categories = ["all", ...new Set(GalleryTexts.items.map(item => item.category))];
-    
+
     // Filter gallery items based on active category
-    const filteredItems = activeCategory === "all" 
-        ? GalleryTexts.items 
+    const filteredItems = activeCategory === "all"
+        ? GalleryTexts.items
         : GalleryTexts.items.filter(item => item.category === activeCategory);
 
     // Handle gallery item click
@@ -47,8 +50,8 @@ const GalleryPage = () => {
     // Function to render gallery item based on type
     const renderGalleryItem = (item: GalleryItem) => {
         return (
-            <div 
-                key={item.id} 
+            <div
+                key={item.id}
                 className="group relative overflow-hidden rounded-lg bg-zinc-800 h-[300px] cursor-pointer"
                 onClick={() => handleGalleryItemClick(item)}
             >
@@ -75,7 +78,7 @@ const GalleryPage = () => {
                         </div>
                     </div>
                 )}
-                
+
                 {/* Overlay with title */}
                 <div className="absolute inset-0 bg-black bg-opacity-0 group-hover:bg-opacity-70 transition-all duration-300 flex items-end p-6">
                     <div className="opacity-0 group-hover:opacity-100 transform translate-y-4 group-hover:translate-y-0 transition-all duration-300">
@@ -114,11 +117,10 @@ const GalleryPage = () => {
                                 <button
                                     key={category}
                                     onClick={() => setActiveCategory(category)}
-                                    className={`px-6 py-2 rounded-full font-medium transition-colors duration-300 ${
-                                        activeCategory === category
+                                    className={`px-6 py-2 rounded-full font-medium transition-colors duration-300 ${activeCategory === category
                                             ? "bg-primary text-white"
                                             : "bg-zinc-800 text-zinc-300 hover:bg-zinc-700"
-                                    }`}
+                                        }`}
                                 >
                                     {category.charAt(0).toUpperCase() + category.slice(1)}
                                 </button>
@@ -127,7 +129,7 @@ const GalleryPage = () => {
 
                         {/* Gallery grid */}
                         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-                            {filteredItems.map(item => renderGalleryItem(item))}
+                            {filteredItems.map(item => renderGalleryItem(item as GalleryItem))}
                         </div>
 
                         {/* Pagination (for future implementation) */}
@@ -173,9 +175,9 @@ const GalleryPage = () => {
 
             {/* Video Modal */}
             {selectedVideo && (
-                <VideoModal 
-                    isOpen={!!selectedVideo} 
-                    onClose={() => setSelectedVideo(null)} 
+                <VideoModal
+                    isOpen={!!selectedVideo}
+                    onClose={() => setSelectedVideo(null)}
                     videoSrc={selectedVideo.src}
                     title={selectedVideo.title}
                 />
@@ -184,7 +186,7 @@ const GalleryPage = () => {
             {/* Image Lightbox */}
             {lightboxOpen && selectedImage && (
                 <div className="fixed inset-0 z-50 flex items-center justify-center bg-black bg-opacity-90 p-4">
-                    <button 
+                    <button
                         onClick={() => setLightboxOpen(false)}
                         className="absolute top-4 right-4 text-zinc-400 hover:text-zinc-100 z-10"
                     >

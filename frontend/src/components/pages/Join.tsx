@@ -49,14 +49,16 @@ const JoinPage = () => {
   }, [formData.weight, formData.height]);
 
   // Handle regular input changes
-  const handleInputChange = (e) => {
+  const handleInputChange = (e: React.ChangeEvent<HTMLInputElement | HTMLSelectElement | HTMLTextAreaElement>) => {
     const { name, value } = e.target;
     setFormData({ ...formData, [name]: value });
   };
 
   // Handle image uploads
-  const handleImageUpload = (e, view) => {
-    const file = e.target.files[0];
+  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, view: string) => {
+    const files = e.target.files;
+    if (!files) return;
+    const file = files[0];
     if (file) {
       setImages({ ...images, [view]: file });
       const reader = new FileReader();
@@ -77,7 +79,7 @@ const JoinPage = () => {
   // };
 
   // Handle form submission
-const handleSubmit = async (e) => {
+const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   e.preventDefault();
   
   try {
@@ -93,10 +95,11 @@ const handleSubmit = async (e) => {
     if (images.backView) formDataToSend.append('backView', images.backView);
     
     // Send data to backend
-    const response = await fetch('http://localhost:5001/api/submit-application', {
+    const response = await fetch('https://y8w9wvoj52.execute-api.us-east-1.amazonaws.com/api/submit-application', {
       method: 'POST',
       body: formDataToSend,
     });
+    console.log("Response:", formDataToSend);
     
     const result = await response.json();
     

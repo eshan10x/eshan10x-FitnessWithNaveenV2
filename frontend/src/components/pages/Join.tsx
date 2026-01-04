@@ -25,7 +25,11 @@ const JoinPage = () => {
   });
 
   // State for image uploads
-  const [images, setImages] = useState({
+  const [images, setImages] = useState<{
+    frontView: File | null;
+    sideView: File | null;
+    backView: File | null;
+  }>({
     frontView: null,
     sideView: null,
     backView: null,
@@ -37,6 +41,58 @@ const JoinPage = () => {
     sideView: "",
     backView: "",
   });
+
+  const [isLoading, setIsLoading] = useState(false);
+
+  const MAX_FILE_SIZE = 5 * 1024 * 1024; // 5MB limit
+  const MAX_IMAGE_DIMENSION = 1200;
+
+  const compressImage = (file: File, maxWidth = MAX_IMAGE_DIMENSION, quality = 0.8): Promise<File> => {
+    return new Promise((resolve) => {
+      const canvas = document.createElement('canvas');
+      const ctx = canvas.getContext('2d');
+      const img = new Image();
+
+      img.onload = () => {
+        // Calculate new dimensions
+        let { width, height } = img;
+        if (width > height) {
+          if (width > maxWidth) {
+            height = (height * maxWidth) / width;
+            width = maxWidth;
+          }
+        } else {
+          if (height > maxWidth) {
+            width = (width * maxWidth) / height;
+            height = maxWidth;
+          }
+        }
+
+        canvas.width = width;
+        canvas.height = height;
+
+        // Draw and compress
+        ctx?.drawImage(img, 0, 0, width, height);
+        canvas.toBlob(
+          (blob) => {
+            if (blob) {
+              const compressedFile = new File([blob], file.name, {
+                type: 'image/jpeg',
+                lastModified: Date.now(),
+              });
+              resolve(compressedFile);
+            } else {
+              resolve(file); // Return original if compression fails
+            }
+          },
+          'image/jpeg',
+          quality
+        );
+      };
+
+      img.src = URL.createObjectURL(file);
+    });
+  };
 
   // Calculate BMI when weight or height changes
   useEffect(() => {
@@ -55,17 +111,49 @@ const JoinPage = () => {
   };
 
   // Handle image uploads
-  const handleImageUpload = (e: React.ChangeEvent<HTMLInputElement>, view: string) => {
+  const handleImageUpload = async (e: React.ChangeEvent<HTMLInputElement>, view: string) => {
     const files = e.target.files;
     if (!files) return;
+
     const file = files[0];
-    if (file) {
-      setImages({ ...images, [view]: file });
+    if (!file) return;
+
+    // Validate file type
+    if (!file.type.startsWith('image/')) {
+      alert('Please select a valid image file.');
+      return;
+    }
+
+    // Validate file size
+    if (file.size > MAX_FILE_SIZE) {
+      alert(`File size too large. Please select an image smaller than ${MAX_FILE_SIZE / 1024 / 1024}MB.`);
+      return;
+    }
+
+    try {
+      setIsLoading(true);
+
+      // Compress image if it's too large
+      let finalFile = file;
+      if (file.size > 1024 * 1024) { // Compress files larger than 1MB
+        finalFile = await compressImage(file);
+        console.log(`Compressed ${file.name} from ${(file.size / 1024 / 1024).toFixed(2)}MB to ${(finalFile.size / 1024 / 1024).toFixed(2)}MB`);
+      }
+
+      setImages({ ...images, [view]: finalFile });
+
+      // Create preview
       const reader = new FileReader();
       reader.onloadend = () => {
-        setPreviews({ ...previews, [view]: reader.result });
+        setPreviews({ ...previews, [view]: reader.result as string });
+        setIsLoading(false);
       };
-      reader.readAsDataURL(file);
+      reader.readAsDataURL(finalFile);
+
+    } catch (error) {
+      console.error('Error processing image:', error);
+      alert('Error processing image. Please try again.');
+      setIsLoading(false);
     }
   };
 
@@ -79,68 +167,93 @@ const JoinPage = () => {
   // };
 
   // Handle form submission
-const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
-  e.preventDefault();
-  
-  try {
-    // Create form data object to send files and text data
-    const formDataToSend = new FormData();
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault();
+    setIsLoading(true);
     
-    // Add the JSON form data
-    formDataToSend.append('formData', JSON.stringify(formData));
-    
-    // Add image files if they exist
-    if (images.frontView) formDataToSend.append('frontView', images.frontView);
-    if (images.sideView) formDataToSend.append('sideView', images.sideView);
-    if (images.backView) formDataToSend.append('backView', images.backView);
-    
-    // Send data to backend
-    const response = await fetch('https://y8w9wvoj52.execute-api.us-east-1.amazonaws.com/api/submit-application', {
-      method: 'POST',
-      body: formDataToSend,
-    });
-    console.log("Response:", formDataToSend);
-    
-    const result = await response.json();
-    
-    if (result.success) {
-      alert("Form submitted successfully! We'll contact you soon.");
-      // Reset form after successful submission
-      setFormData({
-        name: "",
-        dob: "",
-        gender: "",
-        mobile: "",
-        email: "",
-        weight: "",
-        height: "",
-        bmi: "",
-        purpose: "",
-        program: "",
-        heartCondition: "",
-        chestPain: "",
-        looseBalance: "",
-        brokenBone: "",
-        activityLevel: "",
+    try {
+      // Validate total payload size
+      let totalSize = 0;
+      Object.values(images).forEach(img => {
+        if (img) totalSize += img.size;
       });
-      setImages({
-        frontView: null,
-        sideView: null,
-        backView: null,
+      
+      if (totalSize > 15 * 1024 * 1024) { // 15MB total limit
+        alert('Total file size too large. Please reduce image sizes.');
+        setIsLoading(false);
+        return;
+      }
+      
+      const formDataToSend = new FormData();
+      formDataToSend.append('formData', JSON.stringify(formData));
+      
+      // Add compressed images
+      if (images.frontView) formDataToSend.append('frontView', images.frontView);
+      if (images.sideView) formDataToSend.append('sideView', images.sideView);
+      if (images.backView) formDataToSend.append('backView', images.backView);
+      
+      // Use fetch with timeout (AbortController for timeout)
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 60000); // 60 second timeout
+      
+      const response = await fetch('https://y8w9wvoj52.execute-api.us-east-1.amazonaws.com/api/submit-application', {
+        method: 'POST',
+        body: formDataToSend,
+        signal: controller.signal
       });
-      setPreviews({
-        frontView: "",
-        sideView: "",
-        backView: "",
-      });
-    } else {
-      alert("Something went wrong. Please try again later.");
+      
+      clearTimeout(timeoutId);
+      console.log("Response:", response);
+      
+      const result = await response.json();
+      
+      if (result.success) {
+        alert("Form submitted successfully! We'll contact you soon.");
+        // Reset form
+        setFormData({
+          name: "", dob: "", gender: "", mobile: "", email: "",
+          weight: "", height: "", bmi: "", purpose: "", program: "",
+          heartCondition: "", chestPain: "", looseBalance: "", brokenBone: "", activityLevel: "",
+        });
+        setImages({ frontView: null, sideView: null, backView: null });
+        setPreviews({ frontView: "", sideView: "", backView: "" });
+      } else {
+        alert("Something went wrong. Please try again later.");
+      }
+    } catch (error) {
+      console.error("Error submitting form:", error);
+      if (error instanceof Error && error.name === 'AbortError') {
+        alert("Upload timeout. Please check your connection and try again.");
+      } else if (error instanceof Error && error.message.includes('fetch')) {
+        alert("Network error. Please check your connection and try again.");
+      } else {
+        alert("Failed to submit form. Please try again later.");
+      }
+    } finally {
+      setIsLoading(false);
     }
-  } catch (error) {
-    console.error("Error submitting form:", error);
-    alert("Failed to submit form. Please try again later.");
-  }
-};
+  };
+
+  const LoadingPopup = () => (
+    <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
+      <div className="bg-zinc-800 rounded-lg p-8 flex flex-col items-center gap-4 border border-zinc-600 shadow-xl min-w-[300px]">
+        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-primary"></div>
+        <Text as="h3" className="text-zinc-100 text-lg font-semibold">
+          Submitting Application
+        </Text>
+        <Text as="p" className="text-zinc-400 text-center max-w-xs text-sm">
+          Uploading your application and images. This may take a few moments for large files.
+        </Text>
+        
+        {/* Visual indicator for large files */}
+        <div className="flex items-center gap-2 text-zinc-500 text-xs">
+          <div className="w-2 h-2 bg-primary rounded-full animate-pulse"></div>
+          <div className="w-2 h-2 bg-primary rounded-full animate-pulse delay-75"></div>
+          <div className="w-2 h-2 bg-primary rounded-full animate-pulse delay-150"></div>
+        </div>
+      </div>
+    </div>
+  );
 
   // Get BMI category
   const getBmiCategory = () => {
@@ -165,6 +278,7 @@ const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
   return (
     <section className="w-full h-auto flex flex-col items-center bg-zinc-900 pt-24">
       {/* Hero Section */}
+      {isLoading && <LoadingPopup />}
       <div className="w-full py-16 bg-zinc-950">
         <main className="lg:mx-20 md:mx-10 mx-6">
           <Fade>

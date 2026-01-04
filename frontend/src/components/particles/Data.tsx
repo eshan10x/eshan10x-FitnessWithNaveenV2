@@ -79,7 +79,7 @@ export const MembershipPlans = {
             benefits: ["Special offer 25%"]
         },
         {
-            amount: "35,000",
+            amount: "40,000",
             duration: "month",
             caption: "Online Training",
             benefits: [""]
